@@ -56,13 +56,13 @@ public class Zendesk extends CordovaPlugin {
       if (!args.isNull(1)) {
         groupIds = jsonArrayToList(args.getJSONArray(1));
       } else {
-        groupIds = new ArrayList<>();
+        groupIds = new ArrayList<Long>();
       }
 
       if (!args.isNull(2)) {
         labels = jsonArrayToList(args.getJSONArray(2));
       } else {
-        labels = new ArrayList<>();
+        labels = new ArrayList<String>();
       }
 
       zendesk.support.guide.HelpCenterUiConfig.Builder helpCenterActivityBuilder = HelpCenterActivity.builder();
@@ -88,7 +88,7 @@ public class Zendesk extends CordovaPlugin {
       if (!args.isNull(1)) {
         tags = jsonArrayToList(args.getJSONArray(1));
       } else {
-        tags = new ArrayList<>();
+        tags = new ArrayList<String>();
       }
 
       RequestUiConfig.Builder requestActivityBuilder = RequestActivity.builder();
@@ -118,7 +118,7 @@ public class Zendesk extends CordovaPlugin {
   }
 
   private <T> List<T> jsonArrayToList(JSONArray jsonArray) {
-    List<T> arrayList = new ArrayList<>();
+    List<T> arrayList = new ArrayList<T>();
 
     for (int i = 0; i < jsonArray.length(); i++) {
       try {

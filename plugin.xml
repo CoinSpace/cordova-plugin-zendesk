@@ -3,8 +3,6 @@
   <name>Cordova Zendesk Plugin</name>
   <description>Cordova plugin for integrating with Zendesk</description>
 
-  <dependency id="cordova-plugin-cocoapod-support" />
-
   <js-module src="www/Zendesk.js" name="Zendesk">
     <clobbers target="Zendesk" />
   </js-module>
@@ -15,9 +13,6 @@
         <param name="ios-package" value="Zendesk" />
       </feature>
     </config-file>
-
-    <pod name="ZendeskSDK" version="~> 2.3.0" />
-
     <header-file src="src/ios/Zendesk.h" />
     <source-file src="src/ios/Zendesk.m" />
   </platform>

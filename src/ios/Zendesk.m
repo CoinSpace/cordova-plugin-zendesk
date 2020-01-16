@@ -2,6 +2,7 @@
 
 @import ZendeskSDK;
 @import ZendeskCoreSDK;
+#import <CommonUISDK/CommonUISDK-Swift.h>
 
 @implementation Zendesk
 
@@ -12,23 +13,15 @@
   
   [ZDKZendesk initializeWithAppId:appId clientId:clientId zendeskUrl:zendeskUrl];
   [ZDKSupport initializeWithZendesk: [ZDKZendesk instance]];
+  [ZDKTheme currentTheme].primaryColor = [UIColor colorWithRed:0.14 green:0.48 blue:0.29 alpha:1.0];
   
   [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 }
 
 - (void)setAnonymousIdentity:(CDVInvokedUrlCommand *)command { 
-  NSString *name = [command.arguments objectAtIndex:0];
-  NSString *email = [command.arguments objectAtIndex: 1];
+  NSString *name = @"user";
 
-  if ([name isKindOfClass:[NSNull class]]) {
-    name = nil;
-  }
-  
-  if ([email isKindOfClass:[NSNull class]]) {
-    email = nil;
-  }
-  
-  id<ZDKObjCIdentity> userIdentity = [[ZDKObjCAnonymous alloc] initWithName:name email:email];
+  id<ZDKObjCIdentity> userIdentity = [[ZDKObjCAnonymous alloc] initWithName:name email:nil];
   [[ZDKZendesk instance] setIdentity:userIdentity];
 
   [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId]; 
@@ -36,6 +29,8 @@
 
 - (void)showHelpCenter:(CDVInvokedUrlCommand *)command {
   ZDKHelpCenterUiConfiguration *helpCenterConfig = [ZDKHelpCenterUiConfiguration new];
+  ZDKRequestUiConfiguration *requestConfig = [ZDKRequestUiConfiguration new];
+  requestConfig.tags = @[@"mobile", @"ios"];
   
   NSString *groupType = [command.arguments objectAtIndex: 0];
   NSArray *groupIds = [command.arguments objectAtIndex: 1];
@@ -57,7 +52,7 @@
     helpCenterConfig.labels = labels;
   }
 
-  UIViewController *helpCenterController = [ZDKHelpCenterUi buildHelpCenterOverviewUiWithConfigs:@[helpCenterConfig]];
+  UIViewController *helpCenterController = [ZDKHelpCenterUi buildHelpCenterOverviewUiWithConfigs:@[helpCenterConfig, requestConfig]];
   [self presentViewController:helpCenterController];
   
   [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];

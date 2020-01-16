@@ -28,19 +28,20 @@
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
       <activity
         android:name="zendesk.support.guide.HelpCenterActivity"
-        android:theme="@style/Base.Theme.AppCompat" />
+        android:theme="@style/ZendeskCustomTheme" />
       <activity
         android:name="zendesk.support.guide.ViewArticleActivity"
-        android:theme="@style/Base.Theme.AppCompat" />
+        android:theme="@style/ZendeskCustomTheme" />
       <activity
         android:name="zendesk.support.requestlist.RequestListActivity"
-        android:theme="@style/Base.Theme.AppCompat" />
+        android:theme="@style/ZendeskCustomTheme" />
       <activity
         android:name="zendesk.support.request.RequestActivity"
-        android:theme="@style/Base.Theme.AppCompat" />
+        android:theme="@style/ZendeskCustomTheme" />
     </config-file>
 
     <source-file src="src/android/Zendesk.java" target-dir="src/com/rarestep/zendesk" />
+    <resource-file src="src/android/styles.xml" target="res/values/zendesk-styles.xml" />
 
     <framework src="src/android/zendesk.gradle" custom="true" type="gradleReference" />
   </platform>

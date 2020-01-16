@@ -18,6 +18,8 @@ import zendesk.support.guide.ViewArticleActivity;
 import zendesk.support.request.RequestActivity;
 import zendesk.support.request.RequestUiConfig;
 import zendesk.support.requestlist.RequestListActivity;
+import zendesk.commonui.UiConfig;
+// import android.util.Log;
 
 public class Zendesk extends CordovaPlugin {
   private static final String ACTION_INITIALIZE = "initialize";
@@ -26,6 +28,7 @@ public class Zendesk extends CordovaPlugin {
   private static final String ACTION_SHOW_HELP_CENTER_ARTICLE = "showHelpCenterArticle";
   private static final String ACTION_SHOW_TICKET_REQUEST = "showTicketRequest";
   private static final String ACTION_SHOW_USER_TICKETS = "showUserTickets";
+  // private static final String LOG_TAG = "ZENDESK";
 
   @Override
   public boolean execute(String action, CordovaArgs args, CallbackContext callbackContext)
@@ -38,12 +41,9 @@ public class Zendesk extends CordovaPlugin {
       zendesk.core.Zendesk.INSTANCE.init(this.getContext(), zendeskUrl, appId, clientId);
       Support.INSTANCE.init(zendesk.core.Zendesk.INSTANCE);
     } else if (ACTION_SET_ANONYMOUS_IDENTITY.equals(action)) {
-      String name = args.getString(0);
-      String email = args.getString(1);
 
       Identity identity = new AnonymousIdentity.Builder()
-        .withNameIdentifier(name)
-        .withEmailIdentifier(email)
+        .withNameIdentifier("user")
         .build();
 
       zendesk.core.Zendesk.INSTANCE.setIdentity(identity);
@@ -77,7 +77,11 @@ public class Zendesk extends CordovaPlugin {
         helpCenterActivityBuilder = helpCenterActivityBuilder.withLabelNames(labels);
       }
 
-      helpCenterActivityBuilder.show(this.cordova.getActivity());
+      UiConfig requestActivityConfig = RequestActivity.builder()
+        .withTags("mobile", "android")
+        .config();
+
+      helpCenterActivityBuilder.show(this.cordova.getActivity(), requestActivityConfig);
     } else if (ACTION_SHOW_HELP_CENTER_ARTICLE.equals(action)) {
       String articleId = args.getString(0);
       ViewArticleActivity.builder(Long.parseLong(articleId)).show(this.cordova.getActivity());

@@ -17,7 +17,7 @@
     <source-file src="src/ios/Zendesk.m" />
     <podspec>
       <config>
-        <source url="https://github.com/CocoaPods/Specs.git"/>
+        <source url="https://cdn.cocoapods.org/"/>
       </config>
       <pods use-frameworks="true">
         <pod name="ZendeskSDK" spec="~> 4.0.0" />

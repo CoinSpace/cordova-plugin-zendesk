@@ -20,7 +20,7 @@
         <source url="https://cdn.cocoapods.org/"/>
       </config>
       <pods use-frameworks="true">
-        <pod name="ZendeskSDK" spec="~> 4.0.0" />
+        <pod name="ZendeskSupportSDK" spec="~> 5.1.1" />
       </pods>
     </podspec>
   </platform>

@@ -1,6 +1,6 @@
 #import "Zendesk.h"
 
-@import ZendeskSDK;
+@import SupportSDK;
 @import ZendeskCoreSDK;
 #import <CommonUISDK/CommonUISDK-Swift.h>
 
@@ -95,6 +95,8 @@
 
 - (void)presentViewController:(UIViewController *)viewController {
   UINavigationController *navigationController = [[UINavigationController alloc] init];
+  navigationController.view.backgroundColor = [UIColor whiteColor];
+    
   [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:navigationController animated:YES completion:^{}];
   [navigationController pushViewController:viewController animated:YES];
 }

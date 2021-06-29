@@ -2,7 +2,7 @@
 
 @import SupportSDK;
 @import ZendeskCoreSDK;
-#import <CommonUISDK/CommonUISDK-Swift.h>
+#import <CommonUISDK/CommonUISDK.h>
 
 @implementation Zendesk
 
@@ -13,7 +13,7 @@
   
   [ZDKZendesk initializeWithAppId:appId clientId:clientId zendeskUrl:zendeskUrl];
   [ZDKSupport initializeWithZendesk: [ZDKZendesk instance]];
-  [ZDKTheme currentTheme].primaryColor = [UIColor colorWithRed:0.14 green:0.48 blue:0.29 alpha:1.0];
+  [ZDKCommonTheme currentTheme].primaryColor = [UIColor colorWithRed:0.14 green:0.48 blue:0.29 alpha:1.0];
   
   [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 }

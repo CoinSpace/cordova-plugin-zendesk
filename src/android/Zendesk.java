@@ -16,9 +16,10 @@ import zendesk.support.Support;
 import zendesk.support.guide.HelpCenterActivity;
 import zendesk.support.guide.ViewArticleActivity;
 import zendesk.support.request.RequestActivity;
-import zendesk.support.request.RequestUiConfig;
+import zendesk.support.request.RequestConfiguration;
 import zendesk.support.requestlist.RequestListActivity;
-import zendesk.commonui.UiConfig;
+import zendesk.configurations.Configuration;
+// import com.zendesk.logger.Logger;
 // import android.util.Log;
 
 public class Zendesk extends CordovaPlugin {
@@ -65,7 +66,7 @@ public class Zendesk extends CordovaPlugin {
         labels = new ArrayList<String>();
       }
 
-      zendesk.support.guide.HelpCenterUiConfig.Builder helpCenterActivityBuilder = HelpCenterActivity.builder();
+      zendesk.support.guide.HelpCenterConfiguration.Builder helpCenterActivityBuilder = HelpCenterActivity.builder();
 
       if ("category".equals(groupType) && !groupIds.isEmpty()) {
         helpCenterActivityBuilder = helpCenterActivityBuilder.withArticlesForCategoryIds(groupIds);
@@ -77,7 +78,7 @@ public class Zendesk extends CordovaPlugin {
         helpCenterActivityBuilder = helpCenterActivityBuilder.withLabelNames(labels);
       }
 
-      UiConfig requestActivityConfig = RequestActivity.builder()
+      Configuration requestActivityConfig = RequestActivity.builder()
         .withTags("mobile", "android")
         .config();
 
@@ -95,7 +96,7 @@ public class Zendesk extends CordovaPlugin {
         tags = new ArrayList<String>();
       }
 
-      RequestUiConfig.Builder requestActivityBuilder = RequestActivity.builder();
+      RequestConfiguration.Builder requestActivityBuilder = RequestActivity.builder();
 
       if (subject != null) {
         requestActivityBuilder = requestActivityBuilder.withRequestSubject(subject);

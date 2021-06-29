@@ -3,5 +3,7 @@
         <item name="colorPrimary">#237A4A</item>
         <item name="colorPrimaryDark">#185232</item>
         <item name="colorAccent">#3CC77A</item>
+        <item name="colorSecondary">#237A4A</item>
+        <item name="colorOnSecondary">#ffffff</item>
     </style>
 </resources>

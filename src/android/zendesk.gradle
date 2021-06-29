@@ -4,5 +4,5 @@ repositories {
 }
 
 dependencies {
-  compile(group: 'com.zendesk', name: 'support', version: '3.0.3')
+  implementation group: 'com.zendesk', name: 'support', version: '5.0.2'
 }

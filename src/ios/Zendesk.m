@@ -30,11 +30,11 @@
 - (void)showHelpCenter:(CDVInvokedUrlCommand *)command {
   ZDKHelpCenterUiConfiguration *helpCenterConfig = [ZDKHelpCenterUiConfiguration new];
   ZDKRequestUiConfiguration *requestConfig = [ZDKRequestUiConfiguration new];
-  requestConfig.tags = @[@"mobile", @"ios"];
   
   NSString *groupType = [command.arguments objectAtIndex: 0];
   NSArray *groupIds = [command.arguments objectAtIndex: 1];
   NSArray *labels = [command.arguments objectAtIndex:2];
+  NSString *version = [command.arguments objectAtIndex:3];
   
   if (![groupType isEqual:[NSNull null]] && ![groupIds isEqual:[NSNull null]]) {
     if ([groupType isEqualToString:@"category"]) {
@@ -50,6 +50,11 @@
   
   if (![labels isEqual:[NSNull null]]) {
     helpCenterConfig.labels = labels;
+  }
+
+  if (![version isEqual:[NSNull null]]) {
+    ZDKCustomField *versionField = [[ZDKCustomField alloc] initWithFieldId:@24464158 value:version];
+    requestConfig.customFields = @[versionField];
   }
 
   UIViewController *helpCenterController = [ZDKHelpCenterUi buildHelpCenterOverviewUiWithConfigs:@[helpCenterConfig, requestConfig]];

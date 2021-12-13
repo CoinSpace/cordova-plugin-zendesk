@@ -8,10 +8,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import zendesk.core.AnonymousIdentity;
 import zendesk.core.Identity;
+import zendesk.support.CustomField;
 import zendesk.support.Support;
 import zendesk.support.guide.HelpCenterActivity;
 import zendesk.support.guide.ViewArticleActivity;
@@ -52,6 +54,7 @@ public class Zendesk extends CordovaPlugin {
       String groupType = args.getString(0);
       List<Long> groupIds;
       List<String> labels;
+      String version = args.getString(3);
 
 
       if (!args.isNull(1)) {
@@ -78,11 +81,14 @@ public class Zendesk extends CordovaPlugin {
         helpCenterActivityBuilder = helpCenterActivityBuilder.withLabelNames(labels);
       }
 
-      Configuration requestActivityConfig = RequestActivity.builder()
-        .withTags("mobile", "android")
-        .config();
+      RequestConfiguration.Builder builder = RequestActivity.builder();
 
-      helpCenterActivityBuilder.show(this.cordova.getActivity(), requestActivityConfig);
+      if (!version.isEmpty()) {
+        CustomField versionField = new CustomField(24464158L, version);
+        builder = builder.withCustomFields(Arrays.asList(versionField));
+      }
+
+      helpCenterActivityBuilder.show(this.cordova.getActivity(), builder.config());
     } else if (ACTION_SHOW_HELP_CENTER_ARTICLE.equals(action)) {
       String articleId = args.getString(0);
       ViewArticleActivity.builder(Long.parseLong(articleId)).show(this.cordova.getActivity());

@@ -33,11 +33,12 @@ Zendesk.prototype.setAnonymousIdentity = function(name, email, successCallback, 
  * @param groupType Either "category" or "section" to filter articles by group type (optional)
  * @param groupIds Array of category or section group identifiers to filter help center articles (optional)
  * @param labels Array of labels to filter help center by (optional)
+ * @param version String (optional)
  * @param successCallback The callback to be executed upon command success
  * @param errorCallback The callback to be executed upon command failure
  */
-Zendesk.prototype.showHelpCenter = function(groupType, groupIds, labels, successCallback, errorCallback) {
-  exec(successCallback, errorCallback, 'Zendesk', 'showHelpCenter', [groupType, groupIds, labels]);
+Zendesk.prototype.showHelpCenter = function(groupType, groupIds, labels, version, successCallback, errorCallback) {
+  exec(successCallback, errorCallback, 'Zendesk', 'showHelpCenter', [groupType, groupIds, labels, version]);
 }
 
 /**

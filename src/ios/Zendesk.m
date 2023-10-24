@@ -11,8 +11,8 @@
   NSString *clientId = [command.arguments objectAtIndex:1];
   NSString *zendeskUrl = [command.arguments objectAtIndex:2];
   
-  [ZDKZendesk initializeWithAppId:appId clientId:clientId zendeskUrl:zendeskUrl];
-  [ZDKSupport initializeWithZendesk: [ZDKZendesk instance]];
+  [ZDKClassicZendesk initializeWithAppId:appId clientId:clientId zendeskUrl:zendeskUrl];
+  [ZDKSupport initializeWithZendesk: [ZDKClassicZendesk instance]];
   [ZDKCommonTheme currentTheme].primaryColor = [UIColor colorWithRed:0.14 green:0.48 blue:0.29 alpha:1.0];
   
   [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
@@ -22,7 +22,7 @@
   NSString *name = @"user";
 
   id<ZDKObjCIdentity> userIdentity = [[ZDKObjCAnonymous alloc] initWithName:name email:nil];
-  [[ZDKZendesk instance] setIdentity:userIdentity];
+  [[ZDKClassicZendesk instance] setIdentity:userIdentity];
 
   [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId]; 
 }

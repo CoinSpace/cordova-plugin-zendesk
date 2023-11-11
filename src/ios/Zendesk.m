@@ -13,8 +13,7 @@
   
   [ZDKClassicZendesk initializeWithAppId:appId clientId:clientId zendeskUrl:zendeskUrl];
   [ZDKSupport initializeWithZendesk: [ZDKClassicZendesk instance]];
-  [ZDKCommonTheme currentTheme].primaryColor = [UIColor colorWithRed:0.14 green:0.48 blue:0.29 alpha:1.0];
-  
+  [ZDKCommonTheme currentTheme].primaryColor = [UIColor colorWithRed:0.004 green:0.518 blue:0.180 alpha:1.0];  
   [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 }
 

@@ -1,9 +1,9 @@
 <resources>
     <style name="ZendeskCustomTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <item name="colorPrimary">#237A4A</item>
-        <item name="colorPrimaryDark">#185232</item>
-        <item name="colorAccent">#3CC77A</item>
-        <item name="colorSecondary">#237A4A</item>
+        <item name="colorPrimary">#01842e</item>
+        <item name="colorPrimaryDark">#01842e</item>
+        <item name="colorAccent">#68c481</item>
+        <item name="colorSecondary">#01842e</item>
         <item name="colorOnSecondary">#ffffff</item>
     </style>
 </resources>

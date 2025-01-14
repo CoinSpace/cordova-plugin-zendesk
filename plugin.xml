@@ -23,6 +23,7 @@
         <pod name="ZendeskSupportSDK" spec="~> 7.0.0" />
       </pods>
     </podspec>
+    <resource-file src="src/ios/help_center_article_style.css" target="help_center_article_style.css" />
   </platform>
 
   <platform name="android">

@@ -51,6 +51,7 @@
 
     <source-file src="src/android/Zendesk.java" target-dir="src/com/rarestep/zendesk" />
     <resource-file src="src/android/styles.xml" target="res/values/zendesk-styles.xml" />
+    <resource-file src="src/android/help_center_article_style.css" target="assets/help_center_article_style.css"/>
 
     <framework src="src/android/zendesk.gradle" custom="true" type="gradleReference" />
   </platform>

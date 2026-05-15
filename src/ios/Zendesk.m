@@ -99,6 +99,10 @@
 
 - (void)presentViewController:(UIViewController *)viewController {
   UINavigationController *navigationController = [[UINavigationController alloc] init];
+  // Only light theme, because dark is inconsistent
+  if (@available(iOS 13.0, *)) {
+    navigationController.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+  }
   navigationController.view.backgroundColor = [UIColor whiteColor];
   navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
     
